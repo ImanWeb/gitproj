@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/classes.html">\classes</a></li>
+                                                        <li><a href="../namespaces/League.html">\League</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">153</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">25</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">7</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-809880513"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-809880513" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1640881166"></a>
+                                <a href="../namespaces/classes.html" style="margin-left: 30px; padding-left: 0">classes</a>
+            </div>
+            <div id="namespace-1640881166" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-715202137"></a>
+                                <a href="../namespaces/classes.business.html" style="margin-left: 30px; padding-left: 0">business</a>
+            </div>
+            <div id="namespace-715202137" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/classes.business.FeedbackManager.html">FeedbackManager</a></li>
+                                                    <li class="class"><a href="../classes/classes.business.UserManager.html">UserManager</a></li>
+                                                    <li class="class"><a href="../classes/classes.business.Validation.html">Validation</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-42009350"></a>
+                                <a href="../namespaces/classes.data.html" style="margin-left: 30px; padding-left: 0">data</a>
+            </div>
+            <div id="namespace-42009350" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/classes.data.FeedbackManagerDB.html">FeedbackManagerDB</a></li>
+                                                    <li class="class"><a href="../classes/classes.data.UserManagerDB.html">UserManagerDB</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-580302594"></a>
+                                <a href="../namespaces/classes.entity.html" style="margin-left: 30px; padding-left: 0">entity</a>
+            </div>
+            <div id="namespace-580302594" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/classes.entity.Feedback.html">Feedback</a></li>
+                                                    <li class="class"><a href="../classes/classes.entity.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1201908577"></a>
+                                <a href="../namespaces/classes.util.html" style="margin-left: 30px; padding-left: 0">util</a>
+            </div>
+            <div id="namespace-1201908577" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/classes.util.Config.html">Config</a></li>
+                                                    <li class="class"><a href="../classes/classes.util.DBUtil.html">DBUtil</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-694073075"></a>
+                                <a href="../namespaces/League.html" style="margin-left: 30px; padding-left: 0">League</a>
+            </div>
+            <div id="namespace-694073075" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1474202348"></a>
+                                <a href="../namespaces/League.OAuth2.html" style="margin-left: 30px; padding-left: 0">OAuth2</a>
+            </div>
+            <div id="namespace-1474202348" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-661745387"></a>
+                                <a href="../namespaces/League.OAuth2.Client.html" style="margin-left: 30px; padding-left: 0">Client</a>
+            </div>
+            <div id="namespace-661745387" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-891292414"></a>
+                                <a href="../namespaces/League.OAuth2.Client.Provider.html" style="margin-left: 30px; padding-left: 0">Provider</a>
+            </div>
+            <div id="namespace-891292414" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/League.OAuth2.Client.Provider.Google.html">Google</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PHPMailer.html">PHPMailer</a></li>
+                                                    <li class="class"><a href="../classes/phpmailerException.html">phpmailerException</a></li>
+                                                    <li class="class"><a href="../classes/PHPMailerOAuth.html">PHPMailerOAuth</a></li>
+                                                    <li class="class"><a href="../classes/PHPMailerOAuthGoogle.html">PHPMailerOAuthGoogle</a></li>
+                                                    <li class="class"><a href="../classes/POP3.html">POP3</a></li>
+                                                    <li class="class"><a href="../classes/SMTP.html">SMTP</a></li>
+                                                    <li class="class"><a href="../classes/UserManagerDBTest.html">UserManagerDBTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/League.OAuth2.Client.Provider.html">\League\OAuth2\Client\Provider</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\League\OAuth2\Client\Provider</small>Google</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#method_getBaseAuthorizationUrl" class="">getBaseAuthorizationUrl()</a><br />
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#method_getBaseAccessTokenUrl" class="">getBaseAccessTokenUrl()</a><br />
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#method_getResourceOwnerDetailsUrl" class="">getResourceOwnerDetailsUrl()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#constant_ACCESS_TOKEN_RESOURCE_OWNER_ID" class="">ACCESS_TOKEN_RESOURCE_OWNER_ID</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#method_getAuthorizationParameters" class="">getAuthorizationParameters()</a><br />
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#method_getDefaultScopes" class="">getDefaultScopes()</a><br />
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#method_getScopeSeparator" class="">getScopeSeparator()</a><br />
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#method_checkResponse" class="">checkResponse()</a><br />
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#method_createResourceOwner" class="">createResourceOwner()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#property_accessType" class="">$accessType</a><br />
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#property_hostedDomain" class="">$hostedDomain</a><br />
+                                                                    <a href="../classes/League.OAuth2.Client.Provider.Google.html#property_scope" class="">$scope</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/phpmailer.get_oauth_token.html"><div class="path-wrapper">phpmailer\get_oauth_token.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper">\League\OAuth2\Client\Provider\AbstractProvider</div>
+                                                                                                    <div class="namespace-wrapper">\League\OAuth2\Client\Provider\Google</div>
+                            </dd>
+
+                        
+                                                                                    <dt>Uses traits</dt>
+                                                        <dd>
+                                                                    <div class="namespace-wrapper">\League\OAuth2\Client\Tool\BearerAuthorizationTrait</div>
+                                                            </dd>
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ACCESS_TOKEN_RESOURCE_OWNER_ID" name="constant_ACCESS_TOKEN_RESOURCE_OWNER_ID" class="anchor"></a>
+            <article id="constant_ACCESS_TOKEN_RESOURCE_OWNER_ID" class="constant">
+                <h3 class="">ACCESS_TOKEN_RESOURCE_OWNER_ID</h3>
+                <pre class="signature">ACCESS_TOKEN_RESOURCE_OWNER_ID</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_accessType" name="property_accessType" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$accessType</h3>
+                <pre class="signature">$accessType : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; If set, this will be sent to google as the &quot;access_type&quot; parameter.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://developers.google.com/accounts/docs/OAuth2WebServer#offline"><span class="namespace-wrapper">https://developers.google.com/accounts/docs/OAuth2WebServer#offline</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_hostedDomain" name="property_hostedDomain" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$hostedDomain</h3>
+                <pre class="signature">$hostedDomain : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; If set, this will be sent to google as the &quot;hd&quot; parameter.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://developers.google.com/accounts/docs/OAuth2Login#hd-param"><span class="namespace-wrapper">https://developers.google.com/accounts/docs/OAuth2Login#hd-param</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_scope" name="property_scope" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$scope</h3>
+                <pre class="signature">$scope : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; If set, this will be sent to google as the &quot;scope&quot; parameter.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="https://developers.google.com/gmail/api/auth/scopes"><span class="namespace-wrapper">https://developers.google.com/gmail/api/auth/scopes</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBaseAuthorizationUrl" name="method_getBaseAuthorizationUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getBaseAuthorizationUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBaseAuthorizationUrl() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBaseAccessTokenUrl" name="method_getBaseAccessTokenUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getBaseAccessTokenUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBaseAccessTokenUrl(array  <span class="argument">$params</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getResourceOwnerDetailsUrl" name="method_getResourceOwnerDetailsUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getResourceOwnerDetailsUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getResourceOwnerDetailsUrl(\League\OAuth2\Client\Token\AccessToken  <span class="argument">$token</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\League\OAuth2\Client\Token\AccessToken</td>
+                                <td>$token </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAuthorizationParameters" name="method_getAuthorizationParameters" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getAuthorizationParameters()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAuthorizationParameters(array  <span class="argument">$options</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDefaultScopes" name="method_getDefaultScopes" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getDefaultScopes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDefaultScopes() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getScopeSeparator" name="method_getScopeSeparator" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getScopeSeparator()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getScopeSeparator() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_checkResponse" name="method_checkResponse" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">checkResponse()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">checkResponse(\Psr\Http\Message\ResponseInterface  <span class="argument">$response</span>,   <span class="argument">$data</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Psr\Http\Message\ResponseInterface</td>
+                                <td>$response </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$data </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createResourceOwner" name="method_createResourceOwner" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">createResourceOwner()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createResourceOwner(array  <span class="argument">$response</span>, \League\OAuth2\Client\Token\AccessToken  <span class="argument">$token</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$response </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>\League\OAuth2\Client\Token\AccessToken</td>
+                                <td>$token </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">get_oauth_token.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/phpmailer\get_oauth_token.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/classes.html">\classes</a></li>
+                                                                            <li><a href="../namespaces/League.html">\League</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on January 13th, 2019 at 15:05.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
